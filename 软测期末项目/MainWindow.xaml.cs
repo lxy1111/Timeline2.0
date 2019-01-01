@@ -1,0 +1,100 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using Timeline.entity;
+using Timeline.Interface;
+using Timeline.server;
+using 软测期末项目;
+using 软测期末项目.entity;
+using 软测期末项目.server;
+
+namespace Timeline
+{
+    /// <summary>
+    /// MainWindow.xaml 的交互逻辑
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        private User user;
+        private List<Message> newsList=new List<Message>();
+        private IUserDao userDao;
+        private IMessageDao messageDao;
+        private List<MessageInfo> messageInfos = new List<MessageInfo>();
+        private int clicktime;
+        private IDatabase db = new Database();
+
+        public MainWindow(User user)
+        {
+            clicktime = 0;
+            InitializeComponent();
+            this.user = user;
+            userDao = new UserDao(db);
+            messageDao=new MessageDao(db);
+            newsDataBinding();
+        
+        }
+
+        public void updateMessageInfo()
+        {
+            newsList.Clear();
+            newsList = messageDao.GetAllNews();
+            messageInfos.Clear();
+            for (int i = newsList.Count - 1; i >= 0 && i >= newsList.Count - 3 * clicktime - 3; i--)
+            {
+                var messageInfo = new MessageInfo()
+                {
+                    Content = newsList[i].Content,
+                    ImageUrl = newsList[i].ImageUrl,
+                    Username = newsList[i].User.UserName,
+                    PostTime = newsList[i].PostTime
+                };
+                messageInfos.Add(messageInfo);
+            }
+        }
+
+
+        public void newsDataBinding()
+        {
+            updateMessageInfo();
+            NewsLists.ItemsSource = messageInfos;
+        }
+
+        private void openPublishMessageWindow(object sender, RoutedEventArgs e)
+        {
+             PublishMessage publishWindow=new PublishMessage(user);
+             publishWindow.Show();
+          
+        }
+
+   
+
+        private void update(object sender, RoutedEventArgs e)
+        {
+            NewsLists.ItemsSource = null;
+            newsDataBinding();
+        }
+
+        private void showMore(object sender, RoutedEventArgs e)
+        {
+            clicktime++;
+            NewsLists.ItemsSource = null;
+            newsDataBinding();
+        }
+
+        private void NewsLists_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+    }
+}
