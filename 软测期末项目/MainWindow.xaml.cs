@@ -16,8 +16,8 @@ using Timeline.entity;
 using Timeline.Interface;
 using Timeline.server;
 using 软测期末项目;
-using 软测期末项目.entity;
-using 软测期末项目.server;
+using Timeline.entity;
+using Timeline.server;
 
 namespace Timeline
 {
@@ -30,7 +30,7 @@ namespace Timeline
         private List<Message> newsList=new List<Message>();
         private IUserDao userDao;
         private IMessageDao messageDao;
-        private List<MessageInfo> messageInfos = new List<MessageInfo>();
+        private static List<MessageInfo> messageInfos = new List<MessageInfo>();
         private int clicktime;
         private IDatabase db = new Database();
 
@@ -45,7 +45,12 @@ namespace Timeline
         
         }
 
-        public void updateMessageInfo()
+        public static List<MessageInfo> GetMessageInfoList()
+        {
+            return messageInfos;
+        }
+
+        public  void updateMessageInfo(IMessageDao messageDao)
         {
             newsList.Clear();
             newsList = messageDao.GetAllNews();
@@ -66,7 +71,7 @@ namespace Timeline
 
         public void newsDataBinding()
         {
-            updateMessageInfo();
+            updateMessageInfo(messageDao);
             NewsLists.ItemsSource = messageInfos;
         }
 

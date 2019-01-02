@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Timeline.entity;
 
-namespace 软测期末项目.entity
+namespace Timeline.entity
 {
    public class MessageInfo
     {

@@ -70,7 +70,7 @@ namespace Timeline.server.Tests
             IDataParameter password1 = new MySqlParameter();
             mockDb.Setup(d => d.CreateParameter("USER_NAME", user1.UserName)).Returns(username1);
             mockDb.Setup(d => d.CreateParameter("PASSWORD", user1.UserPassword)).Returns(password1);
-            mockDb.Setup(d => d.ExecuteNonQuery(UserDao.CheckLoginSql, username1, password1)).Returns(1);
+            mockDb.Setup(d => d.ExecuteNonQuery(UserDao.RegisterUserSql, username1, password1)).Returns(1);
             server.RegisterUser(user1);
         }
     }

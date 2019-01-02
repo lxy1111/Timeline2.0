@@ -14,9 +14,9 @@ using System.Windows.Shapes;
 using Timeline.entity;
 using Timeline.Interface;
 using Timeline.server;
-using 软测期末项目.server;
+using Timeline.server;
 
-namespace 软测期末项目
+namespace Timeline
 {
     /// <summary>
     /// PublishMessage.xaml 的交互逻辑
@@ -52,14 +52,8 @@ namespace 软测期末项目
             DateTime now = DateTime.Now;
             string nowtime = now.GetDateTimeFormats('f')[0].ToString();
             news =new Message(message,Imageurl,nowtime,user);
-            if (messageDao.PublishMessage(news))
-            {
-                MessageBox.Show("发布成功！");
-            }
-            else
-            {
-                MessageBox.Show("有问题");
-            }
+            messageDao.PublishMessage(news);
+            MessageBox.Show("发布成功！");
         }
 
         private void choosePath(object sender, RoutedEventArgs e)

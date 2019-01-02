@@ -69,11 +69,7 @@ namespace Timeline
 
         public bool doLoginUser(string username, string password)
         {
-            if (username == "" || password == "")
-            {
-                MessageBox.Show("输入不能为空！");
-                return false;
-            }
+           
             user = new User(username, password);
             if (userDao.CheckLogin(user))
             {
@@ -93,6 +89,11 @@ namespace Timeline
         {
             this.username = UsernameBox.Text;
             this.userpassword = PwdBox.Password;
+            if (username == "" || userpassword == "")
+            {
+                MessageBox.Show("输入不能为空！");
+                return;
+            }
             if (doLoginUser(username, userpassword))
             {
                 MessageBox.Show("登录成功");

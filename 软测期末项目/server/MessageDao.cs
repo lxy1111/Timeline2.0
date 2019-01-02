@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using Timeline.entity;
 using Timeline.Interface;
 using Timeline.server;
 
-namespace 软测期末项目.server
+namespace Timeline.server
 {
     public class MessageDao : IMessageDao
     {
@@ -20,46 +21,40 @@ namespace 软测期末项目.server
             this.db = db;
         }
 
+
+        internal const string GetAllNewsSql = "select * from news,users where news.author=users.username";
         public List<Message> GetAllNews()
         {
-            string sql = "select * from news,users where news.author=users.username";
-            return db.ExecuteReader(sql, rs =>
-            {
-                var newsList = new List<Message>();
-                while (rs.Read())
-                {
-                    var message = rs["content"] as string;
-                    var imageUrl = rs["ImageURL"] as string;
-                    var username = rs["author"] as string;
-                    var password = rs["password"] as string;
-                    var posttime = rs["posttime"] as string;
-                    var user = new User(username, password);
-                    var news = new Message(message, imageUrl, posttime, user);
-                    newsList.Add(news);
-                }
-
-                return newsList;
-            });
+            //   string sql = "select * from news,users where news.author=users.username";
+            return db.ExecuteReader(GetAllNewsSql, this.LoadMessages);
         }
 
-        public bool PublishMessage(Message message)
+        internal List<Message> LoadMessages(IDataReader reader)
         {
-            var sql =
-                "insert into news(content,imageURL,author,posttime) values(@CONTENT, @IMAGE_URL, @USER_NAME, @POST_TIME)";
-            try
+            var newsList = new List<Message>();
+            while (reader.Read())
             {
-                    db.ExecuteNonQuery(sql,
+                var message = reader["content"] as string;
+                var imageUrl = reader["ImageURL"] as string;
+                var username = reader["author"] as string;
+                var password = reader["password"] as string;
+                var posttime = reader["posttime"] as string;
+                var user = new User(username, password);
+                var news = new Message(message, imageUrl, posttime, user);
+                newsList.Add(news);
+            }
+            return newsList;
+        }
+
+        internal const string PublishMessageSql = "insert into news(content,imageURL,author,posttime) values(@CONTENT, @IMAGE_URL, @USER_NAME, @POST_TIME)";
+        public void PublishMessage(Message message)
+        { 
+                    db.ExecuteNonQuery(PublishMessageSql,
                     db.CreateParameter("CONTENT", message.Content),
                     db.CreateParameter("IMAGE_URL", message.ImageUrl),
-                    db.CreateParameter("USER_NAME", message.User?.UserName),
+                    db.CreateParameter("USER_NAME", message.User.UserName),
                     db.CreateParameter("POST_TIME", message.PostTime));
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return false;
-            }
+       
         }
     }
 }

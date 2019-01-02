@@ -11,6 +11,6 @@ namespace Timeline.Interface
     public interface IMessageDao
     {
         List<Message> GetAllNews();
-        bool PublishMessage(Message message);
+        void PublishMessage(Message message);
     }
 }
