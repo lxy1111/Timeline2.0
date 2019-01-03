@@ -15,6 +15,8 @@ namespace Timeline.server
     public class MessageDao : IMessageDao
     {
         private IDatabase db;
+        private List<Message> newsList = new List<Message>();
+        private static List<MessageInfo> messageInfos = new List<MessageInfo>();
 
         public MessageDao(IDatabase db)
         {
@@ -55,6 +57,26 @@ namespace Timeline.server
                     db.CreateParameter("USER_NAME", message.User.UserName),
                     db.CreateParameter("POST_TIME", message.PostTime));
        
+        }
+
+        public List<MessageInfo> updateMessageInfo(int clicktime)
+        {
+            newsList.Clear();
+            newsList = GetAllNews();
+            messageInfos.Clear();
+            for (int i = newsList.Count - 1; i >= 0 && i >= newsList.Count - 3 * clicktime - 3; i--)
+            {
+                var messageInfo = new MessageInfo()
+                {
+                    Content = newsList[i].Content,
+                    ImageUrl = newsList[i].ImageUrl,
+                    Username = newsList[i].User.UserName,
+                    PostTime = newsList[i].PostTime
+                };
+                messageInfos.Add(messageInfo);
+            }
+
+            return messageInfos;
         }
     }
 }

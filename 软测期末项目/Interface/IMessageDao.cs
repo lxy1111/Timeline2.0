@@ -12,5 +12,6 @@ namespace Timeline.Interface
     {
         List<Message> GetAllNews();
         void PublishMessage(Message message);
+        List<MessageInfo> updateMessageInfo(int clicktime);
     }
 }

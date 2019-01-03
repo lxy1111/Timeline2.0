@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Timeline" Height="616.754" Width="701.506" WindowStartupLocation="CenterScreen">
     <Grid Background="AliceBlue" Margin="0,0,3.065,-2.156">
-        <ListBox Background="Aquamarine" Name="NewsLists" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding}"  Margin="0,72,0,70" SelectionChanged="NewsLists_SelectionChanged">
+        <ListBox Background="Pink"  Name="NewsLists" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding}"  Margin="0,72,0,70" SelectionChanged="NewsLists_SelectionChanged">
 
             <ListBox.ItemTemplate>
 

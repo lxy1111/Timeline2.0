@@ -50,29 +50,13 @@ namespace Timeline
             return messageInfos;
         }
 
-        public  void updateMessageInfo(IMessageDao messageDao)
-        {
-            newsList.Clear();
-            newsList = messageDao.GetAllNews();
-            messageInfos.Clear();
-            for (int i = newsList.Count - 1; i >= 0 && i >= newsList.Count - 3 * clicktime - 3; i--)
-            {
-                var messageInfo = new MessageInfo()
-                {
-                    Content = newsList[i].Content,
-                    ImageUrl = newsList[i].ImageUrl,
-                    Username = newsList[i].User.UserName,
-                    PostTime = newsList[i].PostTime
-                };
-                messageInfos.Add(messageInfo);
-            }
-        }
-
+  
 
         public void newsDataBinding()
         {
-            updateMessageInfo(messageDao);
+            messageInfos = messageDao.updateMessageInfo(clicktime);
             NewsLists.ItemsSource = messageInfos;
+          
         }
 
         private void openPublishMessageWindow(object sender, RoutedEventArgs e)
