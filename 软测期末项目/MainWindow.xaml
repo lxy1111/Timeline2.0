@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:软测期末项目"
         mc:Ignorable="d"
-        Title="Timeline" Height="616.754" Width="701.506" WindowStartupLocation="CenterScreen">
-    <Grid Background="AliceBlue" Margin="0,0,3.065,-2.156">
-        <ListBox Background="Pink"  Name="NewsLists" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding}"  Margin="0,72,0,70" SelectionChanged="NewsLists_SelectionChanged">
+        Title="Timeline" Height="616.754" ResizeMode="CanMinimize" Width="701.506" WindowStartupLocation="CenterScreen">
+    <Grid Background="AliceBlue"  Margin="0,0,3.065,-1.156">
+        <ListBox Background="Azure"  Name="NewsLists" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding}"  Margin="0,51,0,91" SelectionChanged="NewsLists_SelectionChanged">
 
             <ListBox.ItemTemplate>
 
@@ -17,40 +17,40 @@
 
                         <DockPanel>
 
-                            <TextBlock FontWeight="Bold" Text="作者：" DockPanel.Dock="Left" Margin="5,0,10,0"/>
+                            <TextBlock FontSize="15" FontWeight="Bold" Text="作者：" DockPanel.Dock="Left" Margin="5,0,10,0"/>
 
                             <TextBlock Text=" "/>
 
-                            <TextBlock Text="{Binding Username}" Foreground="Green" FontWeight="Bold"/>
+                            <TextBlock FontSize="15" Text="{Binding Username}" Foreground="DarkSalmon"  FontWeight="Bold"/>
 
                         </DockPanel>
                         <DockPanel>
 
-                            <TextBlock  FontWeight="Bold" Text="发布时间：" DockPanel.Dock="Left" Margin="5,0,5,0"/>
+                            <TextBlock FontSize="15"  FontWeight="Bold" Text="发布时间：" DockPanel.Dock="Left" Margin="5,0,5,0"/>
 
                             <TextBlock Text=" "/>
 
-                            <TextBlock TextWrapping="Wrap"   Text="{Binding PostTime}" Foreground="Blue"/>
-
-                        </DockPanel>
-
-                        <DockPanel>
-
-                            <TextBlock  FontWeight="Bold" Text="内容：" DockPanel.Dock="Left" Margin="5,0,5,0"/>
-
-                            <TextBlock Text=" "/>
-
-                            <TextBlock TextWrapping="Wrap"    Text="{Binding Content}" Foreground="DarkOrange"/>
+                            <TextBlock FontSize="15" TextWrapping="Wrap"   Text="{Binding PostTime}" Foreground="SeaGreen"/>
 
                         </DockPanel>
 
                         <DockPanel>
 
-                            <TextBlock FontWeight="Bold" Text="图片：" DockPanel.Dock="Left" Margin="5,0,5,0"/>
+                            <TextBlock FontSize="15"  FontWeight="Bold" Text="内容：" DockPanel.Dock="Left" Margin="5,0,5,0"/>
 
                             <TextBlock Text=" "/>
 
-                            <Image Width="100" HorizontalAlignment="Left" Height="100" Source="{Binding ImageUrl}"/>
+                            <TextBlock FontSize="15" TextWrapping="Wrap"    Text="{Binding Content}" Foreground="DodgerBlue"/>
+
+                        </DockPanel>
+
+                        <DockPanel>
+
+                            <TextBlock FontSize="15" FontWeight="Bold" Text="图片：" DockPanel.Dock="Left" Margin="5,0,5,0"/>
+
+                            <TextBlock Text=" "/>
+
+                            <Image Width="250" HorizontalAlignment="Left" Height="250" Source="{Binding ImageUrl}"/>
 
                         </DockPanel>
 
@@ -65,9 +65,10 @@
 
         </ListBox>
 
-        <Button FontSize="20"  Style="{StaticResource ResourceKey=MyWpfButton}"  Content="更新" HorizontalAlignment="Left" Height="36" Margin="298,14,0,0" VerticalAlignment="Top" Width="88" Click="update"/>
-        <Button FontSize="20"  Style="{StaticResource ResourceKey=MyWpfButton}"  Content="更多" Click="showMore" HorizontalAlignment="Left" Height="35" Margin="298,545,0,0" VerticalAlignment="Top" Width="88"/>
-        <Button Content="发布消息"  Style="{StaticResource ResourceKey=MyWpfButton}"  FontSize="20" Click="openPublishMessageWindow" HorizontalAlignment="Left" Height="36" Margin="556,14,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button FontSize="20"  Style="{StaticResource ResourceKey=MyWpfButton}"  Content="更新" HorizontalAlignment="Left" Height="36" Margin="594,10,0,0" VerticalAlignment="Top" Width="88" Click="update"/>
+        <Button FontSize="20"  Style="{StaticResource ResourceKey=MyWpfButton}"  Content="更多" Click="showMore" HorizontalAlignment="Left" Height="35" Margin="126,519,0,0" VerticalAlignment="Top" Width="102"/>
+        <Button Content="发布消息"  Style="{StaticResource ResourceKey=MyWpfButton}"  FontSize="20" Click="openPublishMessageWindow" HorizontalAlignment="Left" Height="36" Margin="489,519,0,0" VerticalAlignment="Top" Width="106"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="25"  Height="36" Margin="253,10,0,0" TextWrapping="Wrap" Text="欢迎来到TimeLine" VerticalAlignment="Top" Width="222"/>
 
     </Grid>
 </Window>

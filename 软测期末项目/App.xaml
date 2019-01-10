@@ -8,11 +8,11 @@
         <ResourceDictionary>
             <!--自定义颜色-->
             <LinearGradientBrush x:Key="LinearGradientBlueBackground" EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Blue"  Offset="0" />
-                <GradientStop Color="Blue"  Offset="1" />
+                <GradientStop Color="DeepSkyBlue"  Offset="0" />
+                <GradientStop Color="DeepSkyBlue"  Offset="1" />
             </LinearGradientBrush>
-            <SolidColorBrush x:Key="MyBtnBorderColor" Color="#FF2D78F4"></SolidColorBrush>
-            <SolidColorBrush x:Key="MyBtnHoverBackgroundColor" Color="#FF317EF3"></SolidColorBrush>
+            <SolidColorBrush x:Key="MyBtnBorderColor" Color="DeepSkyBlue"></SolidColorBrush>
+            <SolidColorBrush x:Key="MyBtnHoverBackgroundColor" Color="Blue"></SolidColorBrush>
             <!--END-->
             <!--竖向-->
             <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">

@@ -38,7 +38,7 @@ namespace Timeline.server
             return db.ExecuteScalar(CheckLoginSql, db.CreateParameter("USER_NAME", user.UserName),
                        db.CreateParameter("PASSWORD", user.UserPassword) ) != null;
         }
-        internal const string RegisterUserSql = "select * from users where username=@USER_NAME and password=@PASSWORD";
+        internal const string RegisterUserSql = "insert into users values (@USER_NAME,@PASSWORD)";
         public void RegisterUser(User user)
         {
           //  var sql = "insert into users values(@USER_NAME, @PASSWORD)";

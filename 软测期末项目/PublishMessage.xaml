@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:软测期末项目"
         mc:Ignorable="d"
-        Title="PublishMessage" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid Background="AliceBlue">
-        <TextBox Name="message" HorizontalAlignment="Left" Height="167" Margin="0,71,-0.442,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="794"/>
-        <Button  Style="{StaticResource ResourceKey=MyWpfButton}"  Click="publishMessage" FontSize="20" Content="发布" HorizontalAlignment="Left" Height="45" Margin="356,337,0,0" VerticalAlignment="Top" Width="118"/>
-        <Button  Style="{StaticResource ResourceKey=MyWpfButton}"  Click="choosePath" FontSize="20" Content="浏览" HorizontalAlignment="Left" Height="41" Margin="102,267,0,0" VerticalAlignment="Top" Width="98"/>
-        <TextBlock FontSize="20" Name="ImageURL" HorizontalAlignment="Left" Height="41" Margin="234,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="550"/>
+        Title="PublishMessage" ResizeMode="NoResize"  Height="409.71" Width="628.176" WindowStartupLocation="CenterScreen">
+    <Grid Background="AliceBlue" Margin="0,0,3.208,0.883">
+        <TextBox Name="message" HorizontalAlignment="Left" Height="165" Margin="41,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="547"/>
+        <Button  Style="{StaticResource ResourceKey=MyWpfButton}"  Click="publishMessage" FontSize="20" Content="发布" HorizontalAlignment="Left" Height="45" Margin="247,308,0,0" VerticalAlignment="Top" Width="118"/>
+        <Button  Style="{StaticResource ResourceKey=MyWpfButton}"  Click="choosePath" FontSize="20" Content="浏览" HorizontalAlignment="Left" Height="41" Margin="41,228,0,0" VerticalAlignment="Top" Width="98"/>
+        <TextBlock FontSize="20" Name="ImageURL" HorizontalAlignment="Left" Height="75" Margin="160,228,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="428"/>
 
     </Grid>
 </Window>

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
            ResizeMode="NoResize"
               WindowStartupLocation="CenterScreen"
-          Title="Login" Height="500" Width="700"  WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" 
+          Title="Register" Height="500" Width="700"  WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" 
         MouseLeftButtonDown="DragWindow" >
     <Window.Resources>
         <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">

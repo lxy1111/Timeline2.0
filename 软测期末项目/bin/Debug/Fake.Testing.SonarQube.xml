@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Fake.Testing.SonarQube</name></assembly>
+<members>
+<member name="P:Fake.Testing.SonarQube.SonarQubeParams.Config">
+<summary>
+ Read settings from configuration file
+</summary>
+</member>
+<member name="P:Fake.Testing.SonarQube.SonarQubeParams.Settings">
+<summary>
+ Individual global settings for SonarQube
+</summary>
+</member>
+<member name="P:Fake.Testing.SonarQube.SonarQubeParams.Version">
+<summary>
+ Version number of the project
+</summary>
+</member>
+<member name="P:Fake.Testing.SonarQube.SonarQubeParams.Name">
+<summary>
+ Name of the project
+</summary>
+</member>
+<member name="P:Fake.Testing.SonarQube.SonarQubeParams.Key">
+<summary>
+ Key to identify the SonarQube project
+</summary>
+</member>
+<member name="P:Fake.Testing.SonarQube.SonarQubeParams.ToolsPath">
+<summary>
+ FileName of the SonarQube runner exe. 
+</summary>
+</member>
+<member name="T:Fake.Testing.SonarQube.SonarQubeParams">
+<summary>
+ Parameter type to configure the SonarQube runner.
+</summary>
+</member>
+<member name="T:Fake.Testing.SonarQube.SonarQubeCall">
+<summary>
+ [omit]
+ The supported commands of SonarQube. It is called with Begin before compilation, and End after compilation.
+</summary>
+</member>
+<member name="M:Fake.Testing.SonarQube.finish(Microsoft.FSharp.Core.FSharpOption{Microsoft.FSharp.Core.FSharpFunc{Fake.Testing.SonarQube.SonarQubeParams,Fake.Testing.SonarQube.SonarQubeParams}})">
+<summary>
+   open Fake.Testing
+
+   SonarQube.finish None
+
+   SonarQube.finish (Some (fun p -&gt;
+    {p with
+      Settings = [&quot;sonar.login=login&quot;; &quot;sonar.password=password&quot;] }))
+
+</summary>
+</member>
+<member name="M:Fake.Testing.SonarQube.start(Microsoft.FSharp.Core.FSharpFunc{Fake.Testing.SonarQube.SonarQubeParams,Fake.Testing.SonarQube.SonarQubeParams})">
+<summary>
+   open Fake.Testing
+
+   SonarQube.start (fun p -&gt;
+    {p with
+      Key = &quot;MyProject&quot;
+      Name = &quot;MainTool&quot;
+      Version = &quot;1.0 })
+
+</summary>
+</member>
+<member name="M:Fake.Testing.SonarQube.SonarQubeCall(Fake.Testing.SonarQube.SonarQubeCall,Fake.Testing.SonarQube.SonarQubeParams)">
+<summary>
+ [omit]
+ Execute the external msbuild runner of SonarQube. Parameters are given to the command line tool as required.
+</summary>
+</member>
+<member name="P:Fake.Testing.SonarQube.SonarQubeDefaults">
+<summary>
+ SonarQube default parameters - tries to locate MSBuild.SonarQube.exe in any subfolder.
+</summary>
+</member>
+<member name="T:Fake.Testing.SonarQube">
+<summary>
+ Contains a task to run the msbuild runner of [SonarQube analyzer](http://sonarqube.org).
+</summary>
+</member>
+</members>
+</doc>

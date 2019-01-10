@@ -47,6 +47,7 @@ namespace Timeline
             if (message == ""&&Imageurl=="")
             {
                 MessageBox.Show("输入不能为空！");
+                return;
             }
             
             DateTime now = DateTime.Now;
@@ -54,6 +55,7 @@ namespace Timeline
             news =new Message(message,Imageurl,nowtime,user);
             messageDao.PublishMessage(news);
             MessageBox.Show("发布成功！");
+            Close();
         }
 
         private void choosePath(object sender, RoutedEventArgs e)

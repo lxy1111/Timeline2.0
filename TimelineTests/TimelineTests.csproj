@@ -39,6 +39,33 @@
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.3.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Fake.Core.Context, Version=5.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fake.Core.Context.5.11.1\lib\net46\Fake.Core.Context.dll</HintPath>
+    </Reference>
+    <Reference Include="Fake.Core.Environment, Version=5.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fake.Core.Environment.5.11.1\lib\net46\Fake.Core.Environment.dll</HintPath>
+    </Reference>
+    <Reference Include="Fake.Core.FakeVar, Version=5.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fake.Core.FakeVar.5.11.1\lib\net46\Fake.Core.FakeVar.dll</HintPath>
+    </Reference>
+    <Reference Include="Fake.Core.Process, Version=5.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fake.Core.Process.5.11.1\lib\net46\Fake.Core.Process.dll</HintPath>
+    </Reference>
+    <Reference Include="Fake.Core.String, Version=5.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fake.Core.String.5.11.1\lib\net46\Fake.Core.String.dll</HintPath>
+    </Reference>
+    <Reference Include="Fake.Core.Trace, Version=5.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fake.Core.Trace.5.11.1\lib\net46\Fake.Core.Trace.dll</HintPath>
+    </Reference>
+    <Reference Include="Fake.IO.FileSystem, Version=5.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fake.IO.FileSystem.5.11.1\lib\net46\Fake.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Fake.Testing.SonarQube, Version=5.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fake.Testing.SonarQube.5.11.1\lib\net46\Fake.Testing.SonarQube.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FSharp.Core.4.3.4\lib\net45\FSharp.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -60,8 +87,23 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.FileVersionInfo, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.FileVersionInfo.4.3.0\lib\net46\System.Diagnostics.FileVersionInfo.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Process, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.Process.4.3.0\lib\net461\System.Diagnostics.Process.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.IO.FileSystem.Watcher, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Watcher.4.3.0\lib\net46\System.IO.FileSystem.Watcher.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
@@ -71,6 +113,9 @@
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
+    <Reference Include="TestStack.White, Version=0.13.0.0, Culture=neutral, PublicKeyToken=2672efbf3e161801, processorArchitecture=MSIL">
+      <HintPath>..\packages\TestStack.White.0.13.3\lib\net40\TestStack.White.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <Choose>
@@ -86,9 +131,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IntegrationTest\MessageDaoIntegrationTests.cs" />
+    <Compile Include="IntegrationTest\UserDaoIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="server\MessageDaoTests.cs" />
-    <Compile Include="server\UserDaoTests.cs" />
+    <Compile Include="UnitTest\MessageDaoUnitTests.cs" />
+    <Compile Include="UnitTest\UserDaoUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\软测期末项目\Timeline.csproj">
@@ -97,6 +144,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
